@@ -1,0 +1,47 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "NODE_ENV=prod node ./src/app.js",
+    "dev": "NODE_ENV=prod nodemon ./src/app.js",
+    "test": "NODE_ENV=test nyc --reporter=lcovonly --report-dir=reports mocha -t 20000 ./test/* --exit",
+    "testdev": "NODE_ENV=test nyc --reporter=lcov --reporter=text --report-dir=reports mocha -t 20000 ./test/* --exit"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vaishalxparikh/Backend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vaishalxparikh/Backend/issues"
+  },
+  "homepage": "https://github.com/vaishalxparikh/Backend#readme",
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "joi": "^17.8.3",
+    "jsonwebtoken": "^9.0.0",
+    "mongoose": "^7.0.0",
+    "nodemailer": "^6.9.1",
+    "swagger-ui-express": "^4.6.2",
+    "twilio": "^4.8.0",
+    "yamljs": "^0.3.0"
+  },
+  "devDependencies": {
+    "chai": "^4.3.6",
+    "chai-http": "^4.3.0",
+    "eslint": "^8.35.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "mocha": "^10.1.0",
+    "mocha-junit-reporter": "^2.1.0",
+    "nodemon": "^2.0.20",
+    "nyc": "^15.1.0"
+  }
+}

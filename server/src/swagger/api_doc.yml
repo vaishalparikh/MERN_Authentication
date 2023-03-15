@@ -1,0 +1,134 @@
+openapi: "3.0.0"
+
+info:
+  version: '1.0'
+  title: API Document of Airbnb Document
+  description: All API of  staging available here.
+  
+
+host: localhost:3000
+basePath: /
+schemes: [http]
+
+consumes: [application/json]
+produces: [application/json]
+
+securityDefinitions:
+  Bearer:
+    type: apiKey
+    name: auth
+    in: header
+
+paths:
+  /user/register:
+    post:
+      tags: ["Authentication"]
+      summary: User Register
+      description: To register a user have to pass full name, email and password 
+      consumes:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          required: true
+          schema:
+            type: object
+            properties:
+              fullName:
+                type: string
+                require: true
+              email:
+                type: string
+                require: true
+              password:
+                type: string
+                require: true
+      responses:
+        200:
+          description: success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+        403:
+          description: Not Authorized
+        500:
+          description: Not Found
+
+  /user/login:
+    post:
+      tags: ["Authentication"]
+      summary: User Login
+      description: To login user have to pass email and password in body
+      consumes:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          required: true
+          schema:
+            type: object
+            properties:
+              email:
+                type: string
+                require: true
+              password:
+                type: string
+                require: true
+      responses:
+        200:
+          description: success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+        403:
+          description: Not Authorized
+        500:
+          description: Not Found
+
+  /user/verify-otp:
+    post:
+      tags: ["Authentication"]
+      summary: Verify the user
+      consumes:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          required: true
+          schema:
+            type: object
+            properties:
+              email:
+                type: string
+                require: true
+              otp:
+                type: string
+                require: true
+      responses:
+        200:
+          description: success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+        403:
+          description: Not Authorized
+        500:
+          description: Not Found
